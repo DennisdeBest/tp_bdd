@@ -1,1 +1,2 @@
 [![Coverage Status](https://coveralls.io/repos/github/DennisdeBest/tp_bdd/badge.svg?branch=master)](https://coveralls.io/github/DennisdeBest/tp_bdd?branch=master)
+[![Build Status](https://travis-ci.org/DennisdeBest/tp_bdd.svg?branch=master)](https://travis-ci.org/DennisdeBest/tp_bdd)
