@@ -2,7 +2,7 @@ require('chai').should();
 const request = require('supertest');
 const app = require('../app');
 var lists = [];
-const list =   {
+const list = {
   name: 'test',
   uuid: '833f5874-a909-45a4-bd5c-9312cfd0d4c2',
   items: [
@@ -20,7 +20,7 @@ const list =   {
 
 describe('lists', () => {
 
-  beforeEach(()=> {
+  beforeEach(() => {
     lists = [];
     lists.push(list);
   });
@@ -41,15 +41,15 @@ describe('lists', () => {
     it('should be able to create a new list', () => {
       return request(app)
         .post('/lists')
-        .send({ name: 'autotest' })
+        .send({name: 'autotest'})
         .then((res) => {
-        res.status.should.equal(200)
+          res.status.should.equal(200)
         });
     });
     it('should be able to create a new article in list', () => {
       return request(app)
         .post('/lists/test')
-        .send({ name: 'item3' })
+        .send({name: 'item3'})
         .then((res) => {
           res.status.should.equal(200)
         });
@@ -63,7 +63,7 @@ describe('lists', () => {
         .then((res) => {
           res.status.should.equal(200)
         });
-    })
+    });
     it('should get items from specified list', () => {
       return request(app)
         .get('/lists/833f5874-a909-45a4-bd5c-9312cfd0d4c2')
@@ -78,10 +78,10 @@ describe('lists', () => {
       return request(app)
         .del('/lists/833f5874-a909-45a4-bd5c-9312cfd0d4c2')
         .then((res) => {
-        res.status.should.equal(200)
+          res.status.should.equal(200)
         })
     });
-    it('Should return error if uuid doesn\'t exists',() => {
+    it('Should return error if uuid doesn\'t exists', () => {
       return request(app)
         .del('/lists/833f58dfdsfkek74-a909-45a4-bd5c-931fd0d4c2')
         .then((res) => {

@@ -5,16 +5,16 @@ var lists = require('../data/lists');
 const fs = require('fs');
 
 /* GET users listing. */
-router.get('/', function(req, res) {
+router.get('/', function (req, res) {
   res.send(lists);
 });
 
-router.get('/:uuid', function(req, res) {
+router.get('/:uuid', function (req, res) {
   let uuid = req.params.uuid;
   let code = 404;
   let response = 'specified uuid not found';
   lists.map((list) => {
-    if(list.uuid === uuid){
+    if (list.uuid === uuid) {
       code = 200;
       response = list.items;
     }
@@ -25,8 +25,8 @@ router.get('/:uuid', function(req, res) {
 
 router.post('/', function (req, res) {
   var temp = {
-    uuid:uuid(),
-    name:req.body.name
+    uuid: uuid(),
+    name: req.body.name
   };
   lists.push(temp);
   res.status(200);
@@ -35,13 +35,13 @@ router.post('/', function (req, res) {
 
 router.post('/:name', function (req, res) {
   const temp = {
-    uuid:uuid(),
-    name:req.body.name
+    uuid: uuid(),
+    name: req.body.name
   };
   let code = 404;
   let response = 'specified uuid not found';
   lists.map((list, index) => {
-    if(list.name === req.params.name){
+    if (list.name === req.params.name) {
       list.items.push(temp);
       code = 200;
       response = temp;
@@ -56,7 +56,7 @@ router.delete('/:uuid', function (req, res) {
   let code = 404;
   let response = 'specified uuid not found';
   lists.map((list, index) => {
-    if(list.uuid === uuid){
+    if (list.uuid === uuid) {
       lists.slice(index, 1);
       code = 200;
       response = 'ok';
